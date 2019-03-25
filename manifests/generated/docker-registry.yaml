@@ -1,0 +1,124 @@
+apiVersion: v1
+data:
+  config.yml: |-
+    health:
+      storagedriver:
+        enabled: true
+        interval: 10s
+        threshold: 3
+    http:
+      addr: :80
+      headers:
+        X-Content-Type-Options:
+        - nosniff
+    log:
+      fields:
+        service: registry
+    storage:
+      cache:
+        blobdescriptor: inmemory
+    version: 0.1
+kind: ConfigMap
+metadata:
+  labels:
+    app: docker-registry
+    chart: docker-registry-1.7.0
+    heritage: Tiller
+    release: k8sfin
+  name: k8sfin-docker-registry-config
+---
+apiVersion: v1
+data:
+  haSharedSecret: Y3VYQmJQNm9Qd2picGw2cw==
+kind: Secret
+metadata:
+  labels:
+    app: docker-registry
+    chart: docker-registry-1.7.0
+    heritage: Tiller
+    release: k8sfin
+  name: k8sfin-docker-registry-secret
+type: Opaque
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: docker-registry
+    chart: docker-registry-1.7.0
+    heritage: Tiller
+    release: k8sfin
+  name: k8sfin-docker-registry
+spec:
+  ports:
+  - name: registry
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: docker-registry
+    release: k8sfin
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: docker-registry
+    chart: docker-registry-1.7.0
+    heritage: Tiller
+    release: k8sfin
+  name: k8sfin-docker-registry
+spec:
+  minReadySeconds: 5
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        checksum/config: 0c6a5dc6ec5a0b18bf3dfa8953b31314e8eb41d5854177f37ec82f82741f8e47
+      labels:
+        app: docker-registry
+        release: k8sfin
+    spec:
+      containers:
+      - command:
+        - /bin/registry
+        - serve
+        - /etc/docker/registry/config.yml
+        env:
+        - name: REGISTRY_HTTP_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: haSharedSecret
+              name: k8sfin-docker-registry-secret
+        - name: REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY
+          value: /var/lib/registry
+        image: registry:2.6.2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        name: docker-registry
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/registry/
+          name: data
+        - mountPath: /etc/docker/registry
+          name: k8sfin-docker-registry-config
+      hostNetwork: true
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 0
+      volumes:
+      - emptyDir: {}
+        name: data
+      - configMap:
+          name: k8sfin-docker-registry-config
+        name: k8sfin-docker-registry-config

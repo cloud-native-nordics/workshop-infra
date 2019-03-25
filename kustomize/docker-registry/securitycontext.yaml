@@ -1,0 +1,9 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8sfin-docker-registry
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsUser: 0

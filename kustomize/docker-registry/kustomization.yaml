@@ -1,0 +1,9 @@
+resources:
+- templates/configmap.yaml
+- templates/deployment.yaml
+- templates/secret.yaml
+- templates/service.yaml
+
+patches:
+- hostnet.yaml
+- securitycontext.yaml

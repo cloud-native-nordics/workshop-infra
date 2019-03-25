@@ -1,0 +1,7 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8sfin-kubernetes-dashboard
+  namespace: kube-system
+  annotations:
+    traefik.ingress.kubernetes.io/rewrite-target: /

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8sfin-prometheus
+  annotations:
+    ingress.kubernetes.io/auth-type: basic
+    ingress.kubernetes.io/auth-secret: traefik-basic-auth
+spec:
+  rules:
+  - host: cluster-XX.workshop.kubernetesfinland.com
+    http:
+      paths:
+      - path: /prometheus
+        backend:
+          serviceName: k8sfin-prometheus-operator-prometheus
+          servicePort: 9090

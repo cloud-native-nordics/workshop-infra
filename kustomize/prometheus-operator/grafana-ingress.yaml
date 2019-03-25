@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8sfin-grafana
+  annotations:
+    traefik.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: cluster-02.workshop.kubernetesfinland.com
+    http:
+      paths:
+      - path: /grafana
+        backend:
+          serviceName: k8sfin-grafana
+          servicePort: 80

@@ -1,0 +1,13 @@
+resources:
+- templates/deployment.yaml
+- templates/role.yaml
+- templates/rolebinding.yaml
+- templates/secret.yaml
+- templates/serviceaccount.yaml
+- templates/svc.yaml
+- templates/ingress.yaml
+
+patches:
+- kube-system-deployment.yaml
+- kube-system-service.yaml
+- traefik-ingress.yaml

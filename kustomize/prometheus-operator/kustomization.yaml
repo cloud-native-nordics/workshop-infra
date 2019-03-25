@@ -1,0 +1,107 @@
+resources:
+- charts/prometheus-node-exporter/templates/psp-clusterrole.yaml
+- charts/prometheus-node-exporter/templates/serviceaccount.yaml
+- charts/prometheus-node-exporter/templates/psp-clusterrolebinding.yaml
+- charts/prometheus-node-exporter/templates/service.yaml
+- charts/prometheus-node-exporter/templates/daemonset.yaml
+- charts/prometheus-node-exporter/templates/psp.yaml
+- charts/grafana/templates/serviceaccount.yaml
+- charts/grafana/templates/podsecuritypolicy.yaml
+- charts/grafana/templates/secret.yaml
+- charts/grafana/templates/rolebinding.yaml
+- charts/grafana/templates/clusterrole.yaml
+- charts/grafana/templates/service.yaml
+- charts/grafana/templates/deployment.yaml
+- charts/grafana/templates/clusterrolebinding.yaml
+- charts/grafana/templates/role.yaml
+- charts/grafana/templates/configmap.yaml
+- charts/grafana/templates/configmap-dashboard-provider.yaml
+- charts/kube-state-metrics/templates/psp-clusterrole.yaml
+- charts/kube-state-metrics/templates/serviceaccount.yaml
+- charts/kube-state-metrics/templates/podsecuritypolicy.yaml
+- charts/kube-state-metrics/templates/psp-clusterrolebinding.yaml
+- charts/kube-state-metrics/templates/clusterrole.yaml
+- charts/kube-state-metrics/templates/service.yaml
+- charts/kube-state-metrics/templates/deployment.yaml
+- charts/kube-state-metrics/templates/clusterrolebinding.yaml
+- templates/prometheus-operator/psp-clusterrole.yaml
+# - templates/prometheus-operator/crd-alertmanager.yaml
+- templates/prometheus-operator/servicemonitor.yaml
+- templates/prometheus-operator/serviceaccount.yaml
+- templates/prometheus-operator/psp-clusterrolebinding.yaml
+- templates/prometheus-operator/crd-servicemonitor.yaml
+- templates/prometheus-operator/crd-prometheus.yaml
+- templates/prometheus-operator/clusterrole.yaml
+- templates/prometheus-operator/service.yaml
+- templates/prometheus-operator/deployment.yaml
+- templates/prometheus-operator/psp.yaml
+- templates/prometheus-operator/crd-prometheusrules.yaml
+- templates/prometheus-operator/clusterrolebinding.yaml
+- templates/exporters/node-exporter/servicemonitor.yaml
+- templates/exporters/kube-controller-manager/servicemonitor.yaml
+- templates/exporters/kube-controller-manager/service.yaml
+- templates/exporters/kube-etcd/servicemonitor.yaml
+- templates/exporters/kube-etcd/service.yaml
+- templates/exporters/kube-api-server/servicemonitor.yaml
+- templates/exporters/kubelet/servicemonitor.yaml
+- templates/exporters/core-dns/servicemonitor.yaml
+- templates/exporters/core-dns/service.yaml
+- templates/exporters/kube-state-metrics/serviceMonitor.yaml
+- templates/exporters/kube-scheduler/servicemonitor.yaml
+- templates/exporters/kube-scheduler/service.yaml
+- templates/prometheus/psp-clusterrole.yaml
+- templates/prometheus/servicemonitor.yaml
+- templates/prometheus/serviceaccount.yaml
+- templates/prometheus/prometheus.yaml
+- templates/prometheus/psp-clusterrolebinding.yaml
+- templates/prometheus/role-specificNamespace.yaml
+- templates/prometheus/rolebinding-config.yaml
+- templates/prometheus/rolebinding-specificNamespace.yaml
+- templates/prometheus/clusterrole.yaml
+- templates/prometheus/service.yaml
+- templates/prometheus/role-config.yaml
+- templates/prometheus/psp.yaml
+- templates/prometheus/clusterrolebinding.yaml
+- templates/prometheus/rules/kube-scheduler.rules.yaml
+- templates/prometheus/rules/kubernetes-system.yaml
+- templates/prometheus/rules/k8s.rules.yaml
+- templates/prometheus/rules/alertmanager.rules.yaml
+- templates/prometheus/rules/general.rules.yaml
+- templates/prometheus/rules/prometheus-operator.yaml
+- templates/prometheus/rules/kubernetes-storage.yaml
+- templates/prometheus/rules/kubernetes-apps.yaml
+- templates/prometheus/rules/etcd.yaml
+- templates/prometheus/rules/kube-apiserver.rules.yaml
+- templates/prometheus/rules/kubernetes-resources.yaml
+- templates/prometheus/rules/kube-prometheus-node-recording.rules.yaml
+- templates/prometheus/rules/node.rules.yaml
+- templates/prometheus/rules/kubernetes-absent.yaml
+- templates/prometheus/rules/prometheus.rules.yaml
+- templates/prometheus/rules/kube-prometheus-node-alerting.rules.yaml
+- templates/grafana/servicemonitor.yaml
+- templates/grafana/dashboards/k8s-coredns.yaml
+- templates/grafana/dashboards/persistentvolumesusage.yaml
+- templates/grafana/dashboards/etcd.yaml
+- templates/grafana/dashboards/k8s-resources-pod.yaml
+- templates/grafana/dashboards/nodes.yaml
+- templates/grafana/dashboards/k8s-node-rsrc-use.yaml
+- templates/grafana/dashboards/k8s-resources-namespace.yaml
+- templates/grafana/dashboards/pods.yaml
+- templates/grafana/dashboards/k8s-cluster-rsrc-use.yaml
+- templates/grafana/dashboards/statefulset.yaml
+- templates/grafana/dashboards/k8s-resources-cluster.yaml
+- templates/grafana/configmaps-datasources.yaml
+# - templates/alertmanager/psp-clusterrole.yaml
+# - templates/alertmanager/servicemonitor.yaml
+# - templates/alertmanager/serviceaccount.yaml
+# - templates/alertmanager/psp-clusterrolebinding.yaml
+# - templates/alertmanager/secret.yaml
+# - templates/alertmanager/service.yaml
+# - templates/alertmanager/alertmanager.yaml
+# - templates/alertmanager/psp.yaml
+- grafana-ingress.yaml
+- prometheus-ingress.yaml
+
+patches:
+- grafana-path.yaml
+- routeprefix.yaml

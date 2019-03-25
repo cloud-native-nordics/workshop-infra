@@ -1,0 +1,6 @@
+ingress:
+  enabled: true
+  paths:
+  - /dashboard
+  hosts:
+  - cluster-XX.workshop.kubernetesfinland.com

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  # creationTimestamp: null -- can be omitted
+  name: demo
+# spec: {} -- can be omitted
+# status: {} -- can be omitted

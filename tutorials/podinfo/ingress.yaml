@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: podinfo
+  namespace: demo
+  annotations:
+    traefik.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: cluster-02.workshop.kubernetesfinland.com
+    http:
+      paths:
+      - path: /podinfo
+        backend:
+          serviceName: podinfo
+          servicePort: 80
