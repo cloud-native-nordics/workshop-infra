@@ -6,7 +6,7 @@ metadata:
     traefik.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: cluster-02.workshop.kubernetesfinland.com
+  - host: cluster-XX.workshop.kubernetesfinland.com
     http:
       paths:
       - path: /grafana
