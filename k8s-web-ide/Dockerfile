@@ -22,6 +22,7 @@ RUN mkdir -p /root/.local/share/code-server/Backups /root/.local/share/code-serv
 # https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-kubernetes-tools/vsextensions/vscode-kubernetes-tools/0.1.18/vspackage
 # https://marketplace.visualstudio.com/_apis/public/gallery/publishers/PeterJausovec/vsextensions/vscode-docker/0.6.1/vspackage 
 # https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/vscode-yaml/0.3.0/vspackage
+RUN git clone https://github.com/cloud-native-nordics/workshop-infra /root/project/code-server
 
 # By default run behind a Let's Encrypt proxy
 CMD ["code-server", "--allow-http", "--no-auth"]
