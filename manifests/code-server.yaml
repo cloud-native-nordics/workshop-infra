@@ -60,7 +60,7 @@ spec:
     spec:
       serviceAccountName: code-server
       containers:
-      - image: luxas/k8s-web-ide
+      - image: luxas/k8s-web-ide:v1.0.1
         imagePullPolicy: Always
         name: code-server
         ports:
