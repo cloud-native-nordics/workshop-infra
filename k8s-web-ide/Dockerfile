@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean
 
 # Install kubectl
-ENV K8S_VERSION=v1.13.0
+ENV K8S_VERSION=v1.14.0
 RUN curl -sSL https://dl.k8s.io/release/${K8S_VERSION}/bin/linux/amd64/kubectl > /usr/local/bin/kubectl && \
     chmod +x /usr/local/bin/kubectl
 
