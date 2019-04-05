@@ -8,3 +8,4 @@ workshop with an unique web-based VS Code environment per attendee.
 
 The workshop slide deck is [here](https://docs.google.com/presentation/d/1LJCqZjm5aGFypoZ4fG-ELBe0tcK6pfcN7H8qIrh6pIU/edit#slide=id.g55108ecb85_0_162)
 
+![Slide deck](images/presentation.png?raw=true "Workshop slide deck")
